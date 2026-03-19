@@ -376,6 +376,7 @@ function HeroSection() {
     "Basic Business Website",
     "Portfolio / Blog",
     "Basic E-commerce",
+    "Social Media Management",
   ];
 
   return (
@@ -423,7 +424,7 @@ function HeroSection() {
             {/* Stats */}
             <div className="hero-anim-4 flex flex-wrap gap-9 mt-14 pt-7 border-t border-[#F0F0F0]">
               <div>
-                <div className="font-heading text-3xl font-bold text-[#1A1A1A]">4</div>
+                <div className="font-heading text-3xl font-bold text-[#1A1A1A]">5</div>
                 <div className="text-xs text-[#6B7280] mt-0.5">Services</div>
               </div>
               <div>
@@ -611,6 +612,11 @@ function ServicesSection() {
       icon: "🛒",
       title: "Basic E-commerce",
       description: "Get your products online with a simple yet effective e-commerce solution. Easy to manage and designed to convert browsers into buyers.",
+    },
+    {
+      icon: "📱",
+      title: "Social Media Management",
+      description: "Build your brand presence online with strategic social media content. Includes content creation, scheduling, and basic analytics to grow your audience.",
     },
   ];
 
