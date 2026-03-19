@@ -450,13 +450,14 @@ function HeroSection() {
 
             <div className="flex flex-col gap-2.5">
               {services.map((service, index) => (
-                <div
+                <a
                   key={index}
+                  href="#pricing"
                   className="px-4 py-3.5 bg-white border border-[#F0F0F0] rounded-xl flex justify-between items-center cursor-pointer transition-all duration-300 hover:border-[#F4C430] hover:bg-[#FFF8E1]"
                 >
                   <span className="text-[13px] font-medium text-[#1A1A1A]">{service}</span>
                   <span className="text-base">→</span>
-                </div>
+                </a>
               ))}
             </div>
 
