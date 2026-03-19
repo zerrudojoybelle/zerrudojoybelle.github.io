@@ -850,7 +850,7 @@ function PricingSection() {
               </ul>
 
               {/* Revisions & Delivery */}
-              <div className="bg-[#FAFAFA] rounded-lg p-3 mb-5 space-y-1">
+              <div className="bg-[#FAFAFA] rounded-lg p-3 mb-4 space-y-1">
                 <div className="flex justify-between text-xs">
                   <span className="text-[#6B7280]">Revisions:</span>
                   <span className="font-medium text-[#1A1A1A]">{pkg.revisions}</span>
@@ -865,6 +865,11 @@ function PricingSection() {
                     <span className="font-medium text-[#22C55E]">{pkg.support}</span>
                   </div>
                 )}
+              </div>
+
+              {/* Domain & Hosting Note */}
+              <div className="bg-[#FFF8E1] rounded-lg px-3 py-2 text-center mb-4">
+                <span className="text-[11px] font-medium text-[#92700A]">🌐 Domain & hosting not included</span>
               </div>
 
               {/* CTA Button */}
@@ -909,13 +914,6 @@ function PricingSection() {
           <p className="text-center text-xs text-[#6B7280] mt-6">
             💛 All prices are starting rates. Final quote depends on project complexity. Payment via GCash, PayPal, or bank transfer.
           </p>
-
-          {/* Important Note */}
-          <div className="mt-6 bg-[#FFF8E1] border border-[#F4C430] rounded-xl p-4 text-center">
-            <p className="text-sm font-medium text-[#92700A]">
-              📌 <strong>Note:</strong> Domain & hosting are not included and will be an additional cost.
-            </p>
-          </div>
         </div>
       </div>
     </section>
