@@ -285,6 +285,7 @@ function Navigation() {
   const navLinks = [
     { href: "#about", label: "About" },
     { href: "#services", label: "Services" },
+    { href: "#pricing", label: "Pricing" },
     { href: "#portfolio", label: "Work" },
     { href: "#process", label: "Process" },
   ];
@@ -646,6 +647,261 @@ function ServicesSection() {
               </p>
             </div>
           ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// Pricing Section
+function PricingSection() {
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    const elements = sectionRef.current?.querySelectorAll(".reveal");
+    elements?.forEach((el) => observer.observe(el));
+
+    return () => observer.disconnect();
+  }, []);
+
+  const packages = [
+    {
+      name: "Starter",
+      icon: "🥉",
+      pricePHP: "₱3,500",
+      priceUSD: "$80",
+      description: "Perfect for personal brands and simple landing pages",
+      pages: "1 Page",
+      features: [
+        { text: "Mobile Responsive", included: true },
+        { text: "Contact Form", included: true },
+        { text: "Social Media Links", included: true },
+        { text: "Basic SEO Setup", included: true },
+        { text: "Google Maps Integration", included: false },
+        { text: "Blog Setup", included: false },
+        { text: "WordPress CMS", included: false },
+        { text: "E-commerce Features", included: false },
+      ],
+      revisions: "2 Revisions",
+      delivery: "3–5 Days",
+      support: "❌",
+      popular: false,
+    },
+    {
+      name: "Business",
+      icon: "🥈",
+      pricePHP: "₱8,000",
+      priceUSD: "$200",
+      description: "Great for small businesses and professionals",
+      pages: "3–5 Pages",
+      features: [
+        { text: "Mobile Responsive", included: true },
+        { text: "Contact Form", included: true },
+        { text: "Social Media Links", included: true },
+        { text: "Basic SEO Setup", included: true },
+        { text: "Google Maps Integration", included: true },
+        { text: "Blog Setup", included: false },
+        { text: "WordPress CMS", included: false },
+        { text: "E-commerce Features", included: false },
+      ],
+      revisions: "3 Revisions",
+      delivery: "7–10 Days",
+      support: "❌",
+      popular: true,
+    },
+    {
+      name: "E-Commerce",
+      icon: "🛒",
+      pricePHP: "₱15,000",
+      priceUSD: "$400",
+      description: "Start selling online with payment integration",
+      pages: "Up to 10 Pages",
+      features: [
+        { text: "Mobile Responsive", included: true },
+        { text: "Contact Form", included: true },
+        { text: "Social Media Links", included: true },
+        { text: "Basic SEO Setup", included: true },
+        { text: "Google Maps Integration", included: true },
+        { text: "Product Pages + Cart", included: true },
+        { text: "GCash / PayPal Payment", included: true },
+        { text: "Up to 10 Products Listed", included: true },
+      ],
+      revisions: "4 Revisions",
+      delivery: "10–14 Days",
+      support: "❌",
+      popular: false,
+    },
+    {
+      name: "Premium",
+      icon: "👑",
+      pricePHP: "₱25,000",
+      priceUSD: "$600",
+      description: "Complete solution with CMS and full support",
+      pages: "Up to 10 Pages",
+      features: [
+        { text: "Mobile Responsive", included: true },
+        { text: "Contact Form", included: true },
+        { text: "Social Media Links", included: true },
+        { text: "Advanced SEO", included: true },
+        { text: "Google Maps Integration", included: true },
+        { text: "Blog Setup", included: true },
+        { text: "WordPress CMS", included: true },
+        { text: "Speed Optimization", included: true },
+      ],
+      revisions: "5 Revisions",
+      delivery: "14–21 Days",
+      support: "1 Month Free",
+      popular: false,
+    },
+  ];
+
+  const addons = [
+    { name: "Logo Design (Basic)", pricePHP: "₱1,500", priceUSD: "$35" },
+    { name: "Extra Revision", pricePHP: "₱500", priceUSD: "$12" },
+    { name: "Rush Delivery (50% faster)", pricePHP: "₱1,000", priceUSD: "$25" },
+    { name: "Domain + Hosting Setup", pricePHP: "₱1,000", priceUSD: "$25" },
+    { name: "Monthly Website Maintenance", pricePHP: "₱1,500/mo", priceUSD: "$35/mo" },
+  ];
+
+  return (
+    <section id="pricing" ref={sectionRef} className="py-28 bg-[#FAFAFA]">
+      <div className="max-w-[1100px] mx-auto px-7">
+        {/* Header */}
+        <div className="text-center mb-16 reveal">
+          <span className="inline-block bg-[#FFF8E1] text-[#92700A] font-heading text-[11px] font-semibold tracking-[0.18em] uppercase px-3.5 py-1.5 rounded-full mb-4">
+            Pricing
+          </span>
+          <h2 className="font-heading text-3xl md:text-4xl font-bold text-[#1A1A1A] tracking-tight mb-4">
+            Web Design Packages
+          </h2>
+          <div className="w-12 h-1 bg-[#F4C430] rounded mx-auto mb-6"></div>
+          <p className="text-[#6B7280] max-w-xl mx-auto">
+            Transparent pricing with no hidden fees. Choose the package that fits your needs, or contact me for a custom quote.
+          </p>
+        </div>
+
+        {/* Pricing Cards */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5 mb-16">
+          {packages.map((pkg, index) => (
+            <div
+              key={index}
+              className={`reveal relative bg-white rounded-[20px] p-6 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_20px_50px_rgba(0,0,0,0.08)] ${
+                pkg.popular
+                  ? "border-2 border-[#F4C430] shadow-[0_8px_30px_rgba(244,196,48,0.2)]"
+                  : "border border-[#F0F0F0]"
+              }`}
+            >
+              {pkg.popular && (
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#F4C430] text-[#1A1A1A] font-heading text-[10px] font-semibold tracking-wider uppercase px-4 py-1 rounded-full">
+                  Most Popular
+                </div>
+              )}
+
+              {/* Package Header */}
+              <div className="text-center mb-5 pb-5 border-b border-[#F0F0F0]">
+                <div className="text-3xl mb-2">{pkg.icon}</div>
+                <h3 className="font-heading text-lg font-bold text-[#1A1A1A]">{pkg.name}</h3>
+                <p className="text-xs text-[#6B7280] mt-1">{pkg.description}</p>
+              </div>
+
+              {/* Price */}
+              <div className="text-center mb-5">
+                <div className="font-heading text-2xl font-bold text-[#1A1A1A]">{pkg.pricePHP}</div>
+                <div className="text-sm text-[#6B7280]">{pkg.priceUSD}</div>
+              </div>
+
+              {/* Pages */}
+              <div className="bg-[#FFF8E1] rounded-lg px-3 py-2 text-center mb-5">
+                <span className="text-xs font-medium text-[#92700A]">{pkg.pages}</span>
+              </div>
+
+              {/* Features */}
+              <ul className="space-y-2 mb-5">
+                {pkg.features.map((feature, fIndex) => (
+                  <li key={fIndex} className="flex items-center gap-2 text-xs">
+                    {feature.included ? (
+                      <span className="text-[#22C55E]">✓</span>
+                    ) : (
+                      <span className="text-[#D1D5DB]">✗</span>
+                    )}
+                    <span className={feature.included ? "text-[#1A1A1A]" : "text-[#9CA3AF]"}>
+                      {feature.text}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+
+              {/* Revisions & Delivery */}
+              <div className="bg-[#FAFAFA] rounded-lg p-3 mb-5 space-y-1">
+                <div className="flex justify-between text-xs">
+                  <span className="text-[#6B7280]">Revisions:</span>
+                  <span className="font-medium text-[#1A1A1A]">{pkg.revisions}</span>
+                </div>
+                <div className="flex justify-between text-xs">
+                  <span className="text-[#6B7280]">Delivery:</span>
+                  <span className="font-medium text-[#1A1A1A]">{pkg.delivery}</span>
+                </div>
+                {pkg.support !== "❌" && (
+                  <div className="flex justify-between text-xs">
+                    <span className="text-[#6B7280]">Support:</span>
+                    <span className="font-medium text-[#22C55E]">{pkg.support}</span>
+                  </div>
+                )}
+              </div>
+
+              {/* CTA Button */}
+              <a
+                href="#contact"
+                className={`block w-full text-center py-2.5 rounded-full font-heading text-xs font-semibold transition-all duration-300 ${
+                  pkg.popular
+                    ? "bg-[#F4C430] text-[#1A1A1A] hover:bg-[#E6B820] hover:-translate-y-0.5 shadow-[0_4px_12px_rgba(244,196,48,0.3)]"
+                    : "bg-[#1A1A1A] text-white hover:bg-[#333] hover:-translate-y-0.5"
+                }`}
+              >
+                Get Started →
+              </a>
+            </div>
+          ))}
+        </div>
+
+        {/* Add-ons Section */}
+        <div className="reveal bg-white border border-[#F0F0F0] rounded-[20px] p-8">
+          <h3 className="font-heading text-xl font-bold text-[#1A1A1A] mb-2 text-center">
+            ✦ Add-Ons & Extras
+          </h3>
+          <p className="text-[#6B7280] text-sm text-center mb-6">
+            Enhance your package with these optional add-ons
+          </p>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {addons.map((addon, index) => (
+              <div
+                key={index}
+                className="flex justify-between items-center bg-[#FAFAFA] rounded-xl px-4 py-3 hover:bg-[#FFF8E1] transition-colors"
+              >
+                <span className="text-sm font-medium text-[#1A1A1A]">{addon.name}</span>
+                <div className="text-right">
+                  <div className="text-sm font-bold text-[#F4C430]">{addon.pricePHP}</div>
+                  <div className="text-xs text-[#6B7280]">{addon.priceUSD}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <p className="text-center text-xs text-[#6B7280] mt-6">
+            💛 All prices are starting rates. Final quote depends on project complexity. Payment via GCash, PayPal, or bank transfer.
+          </p>
         </div>
       </div>
     </section>
@@ -1187,6 +1443,7 @@ export default function Home() {
       <HeroSection />
       <AboutSection />
       <ServicesSection />
+      <PricingSection />
       <PortfolioSection />
       <ProcessSection />
       <ContactSection />
