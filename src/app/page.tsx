@@ -909,6 +909,13 @@ function PricingSection() {
           <p className="text-center text-xs text-[#6B7280] mt-6">
             💛 All prices are starting rates. Final quote depends on project complexity. Payment via GCash, PayPal, or bank transfer.
           </p>
+
+          {/* Important Note */}
+          <div className="mt-6 bg-[#FFF8E1] border border-[#F4C430] rounded-xl p-4 text-center">
+            <p className="text-sm font-medium text-[#92700A]">
+              📌 <strong>Note:</strong> Domain & hosting are not included and will be an additional cost.
+            </p>
+          </div>
         </div>
       </div>
     </section>
